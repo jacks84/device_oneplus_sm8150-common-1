@@ -99,7 +99,4 @@
     <string name="vib_strength_title_head">Интенсивность</string>
     <string name="vib_strength_summary_head">Установить интенсивность общей вибрации</string>
     <string name="vibration_warning">Установка слишком высокой прочности может привести к необратимому повреждению</string>
-    
-    <string name="audio_title">Звук</string>
-    <string name="dolby_title">Dolby Atmos</string>
 </resources>

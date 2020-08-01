@@ -99,7 +99,4 @@
     <string name="vib_strength_title_head">Сила</string>
     <string name="vib_strength_summary_head">Задати силу вібрації</string>
     <string name="vibration_warning">Setting strength too high may cause permanent hardware damage</string>
-    
-    <string name="audio_title">Звук</string>
-    <string name="dolby_title">Dolby Atmos</string>
 </resources>

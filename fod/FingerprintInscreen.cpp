@@ -73,12 +73,14 @@ FingerprintInscreen::FingerprintInscreen() {
 Return<void> FingerprintInscreen::onStartEnroll() {
     this->mVendorFpService->updateStatus(OP_DISABLE_FP_LONGPRESS);
     this->mVendorFpService->updateStatus(OP_RESUME_FP_ENROLL);
+    set(HBM_ENABLE_PATH, 1);
 
     return Void();
 }
 
 Return<void> FingerprintInscreen::onFinishEnroll() {
     this->mVendorFpService->updateStatus(OP_FINISH_FP_ENROLL);
+    set(HBM_ENABLE_PATH, 0);
 
     return Void();
 }
@@ -155,8 +157,10 @@ Return<bool> FingerprintInscreen::handleError(int32_t error, int32_t vendorCode)
 
     switch (error) {
         case FINGERPRINT_ERROR_CANCELED:
-            if (vendorCode == 0) {
+            // Turn HBM off after canceled fingerprint enrollment
+            if (this->mIsEnrolling && vendorCode == 0) {
                 this->mIsEnrolling = false;
+                set(HBM_ENABLE_PATH, 0);
             }
             return false;
         case FINGERPRINT_ERROR_VENDOR:
